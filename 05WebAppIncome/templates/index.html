@@ -1,0 +1,204 @@
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Estimado de Ingresos by Cristina Chapoñan</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{{url_for('static',filename='assets/css/main.css')}}" />
+		<noscript><link rel="stylesheet" href="{{url_for('static',filename='assets/css/noscript.css')}}" /></noscript>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<span class="logo"><img src="{{url_for('static',filename='images/gcp-logo-cloud.png')}}" alt="" width="80" /></span>
+						<h1>Estimador de Ingresos</h1>
+						<p>de trabajadores públicos peruanos<br />
+						construido por <a href="https://github.com/CristinaChaponanC">@cristinacc</a> para el <a href="https://www.ucm.es/">TFM de la UCM</a>.</p>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="#intro" class="active">Predicción</a></li>
+							<!--<li><a href="#first">First Section</a></li>
+							<li><a href="#second">Second Section</a></li>
+							<li><a href="#cta">Get Started</a></li>-->
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Introduction -->
+							<section id="intro" class="main">
+								<div class="col-6 col-12-xsmall">
+									<div class="content">
+										<header class="major">
+											<h2>Ingrese los valores</h2>
+										</header>
+										<form action="{{ url_for('main') }}" method="POST">
+											<div class="row gtr-uniform"></div>
+										<!-- 	<fieldset>-->
+											
+												<div class="col-4 col-12-xsmall">
+													<br> Edad:
+													<br><input name="edad" type="number" value="" placeholder="18 - 65" required>
+												</div>
+
+												<div class="col-4 col-12-xsmall">
+													<br> Educación:
+													<select name="educacion" id="demo-category" required>
+														<option value="">- Categoría -</option>
+														<option value="0">Inicial</option>
+														<option value="19">Primaria</option>
+														<option value="29">Secundaria</option>
+														<option value="39">Técnica</option>
+														<option value="57">Superior</option>
+													</select>
+												</div>
+
+												<div class="col-4 col-12-xsmall">
+													<br> Tiene una empresa propia:
+													<select name="empresa" id="demo-category" required>
+														<option value="">- Categoría -</option>
+														<option value="1">Sí</option>
+														<option value="0">No</option>
+													</select>
+												</div>
+									
+													<br>
+												<div class="col-4 col-12-xsmall">
+													Máxima deuda:
+													<br><input name="max_saldo" type="number" value="" placeholder="0 - 100,000" required>
+												</div>
+											
+											<div class="col-4 col-12-xsmall">
+												<br> Disminución de deuda mensual:
+												<br><input name="decre_saldo" type="number" value="" placeholder="0 - 10,000"required>
+											</div>
+											
+											<div class="col-4 col-12-xsmall">
+												<br> Línea de tarjeta de crédito:
+												<br><input name="linea_tc" type="number" value="" placeholder="0 - 100,00"required>
+											</div>
+											
+											<div class="col-4 col-12-xsmall">
+												<br> Deuda de tarjeta de crédito:
+												<br><input name="deuda_tc" type="number" value="" placeholder="0 - 100,00"required>
+											</div>
+
+												<br>
+												<input type="submit">
+									<!--		</fieldset>-->
+										</div>
+										</form>
+									
+										<header class="major">
+											<h2>Resultado</h2>
+										</header>	
+									</div col-8 col-12-xsmall>
+									<br>
+										<div class="result" align="center">
+											{% if result %}
+												{% for variable, value in original_input.items() %}
+													<b>{{ variable }}</b> : {{ value }}
+												{% endfor %}
+												<br>
+												<br> El ingreso estimado es:
+												<p style="font-size:50px">{{ result }}</p>
+											{% endif %}
+										</div>
+								</div>
+							</section>
+
+						<!-- First Section -->
+							<section id="first" class="main special">
+								<header class="major">
+									<h2>Tecnologías</h2>
+								</header>
+								<ul class="features">
+									<li>
+										<span class="icon solid major style1 fa-code"></span>
+										<h3>Python</h3>
+										<p>Para el preprocesamiento y construcción del modelo</p>
+									</li>
+									<li>
+										<span class="icon major style3 fa-copy"></span>
+										<h3>GCP</h3>
+										<p>Google Cloud Platform toda la arquitectura de la aplicación y desarrollo.</p>
+									</li>
+									<li>
+										<span class="icon major style5 fa-gem"></span>
+										<h3>Flask</h3>
+										<p>Para la creación de esta webapp.</p>
+									</li>
+								</ul>
+								<footer class="major">
+									<ul class="actions special">
+										<li><a href="https://github.com/CristinaChaponanC/PredictIncome" class="button">Proyecto en GitHub</a></li>
+									</ul>
+								</footer>
+							</section>
+
+						
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<h2>Cristina Chapoñan Chamorro</h2>
+							<p> Especialista de datos enfocada al data engineering y data science.</p>
+							<ul class="actions">
+								<li><a href="https://www.linkedin.com/in/cristina-chapo%C3%B1an/" class="button">Learn More</a></li>
+							</ul>
+						</section>
+						<section>
+							<h2>Contacto</h2>
+							<dl class="alt">
+								<dt>Address</dt>
+								<dd>Lima &bull; Perú</dd>
+								<dt></dt>
+								<dd></dd>
+								<dt>Email</dt>
+								<dd><a href="#">cchaponanc@uni.pe</a></dd>
+							</dl>
+							<ul class="icons">
+								<li><a href="#" class="icon brands fa-twitter alt"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a></li>
+								<li><a href="#" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
+								<li><a href="#" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
+								<li><a href="#" class="icon brands fa-dribbble alt"><span class="label">Dribbble</span></a></li>
+							</ul>
+						</section>
+						<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+					</footer>
+
+			</div>
+
+		<!-- Scripts 
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>-->
+
+		<script src="{{url_for('static',filename='assets/js/breakpoints.min.js')}}"></script>
+		<script src="{{url_for('static',filename='assets/js/browser.min.js')}}"></script>
+		<script src="{{url_for('static',filename='assets/js/jquery.min.js')}}"></script>
+		<script src="{{url_for('static',filename='assets/js/jquery.scrollex.js')}}"></script>
+		<script src="{{url_for('static',filename='assets/js/jquery.scrolly.js')}}"></script>
+		<script src="{{url_for('static',filename='assets/js/jquery.main.js')}}"></script>
+		<script src="{{url_for('static',filename='assets/js/jquery.util.js')}}"></script>
+
+	</body>
+</html>
